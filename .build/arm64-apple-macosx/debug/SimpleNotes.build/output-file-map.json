@@ -1,0 +1,41 @@
+{
+  "": {
+    "swift-dependencies": "/Users/devinpowers/Claude/SimpleNotes/.build/arm64-apple-macosx/debug/SimpleNotes.build/master.swiftdeps"
+  },
+  "/Users/devinpowers/Claude/SimpleNotes/SimpleNotes/Models/Note.swift": {
+    "dependencies": "/Users/devinpowers/Claude/SimpleNotes/.build/arm64-apple-macosx/debug/SimpleNotes.build/Note.d",
+    "object": "/Users/devinpowers/Claude/SimpleNotes/.build/arm64-apple-macosx/debug/SimpleNotes.build/Note.swift.o",
+    "swiftmodule": "/Users/devinpowers/Claude/SimpleNotes/.build/arm64-apple-macosx/debug/SimpleNotes.build/Note~partial.swiftmodule",
+    "swift-dependencies": "/Users/devinpowers/Claude/SimpleNotes/.build/arm64-apple-macosx/debug/SimpleNotes.build/Note.swiftdeps"
+  },
+  "/Users/devinpowers/Claude/SimpleNotes/SimpleNotes/SimpleNotesApp.swift": {
+    "dependencies": "/Users/devinpowers/Claude/SimpleNotes/.build/arm64-apple-macosx/debug/SimpleNotes.build/SimpleNotesApp.d",
+    "object": "/Users/devinpowers/Claude/SimpleNotes/.build/arm64-apple-macosx/debug/SimpleNotes.build/SimpleNotesApp.swift.o",
+    "swiftmodule": "/Users/devinpowers/Claude/SimpleNotes/.build/arm64-apple-macosx/debug/SimpleNotes.build/SimpleNotesApp~partial.swiftmodule",
+    "swift-dependencies": "/Users/devinpowers/Claude/SimpleNotes/.build/arm64-apple-macosx/debug/SimpleNotes.build/SimpleNotesApp.swiftdeps"
+  },
+  "/Users/devinpowers/Claude/SimpleNotes/SimpleNotes/Views/ContentView.swift": {
+    "dependencies": "/Users/devinpowers/Claude/SimpleNotes/.build/arm64-apple-macosx/debug/SimpleNotes.build/ContentView.d",
+    "object": "/Users/devinpowers/Claude/SimpleNotes/.build/arm64-apple-macosx/debug/SimpleNotes.build/ContentView.swift.o",
+    "swiftmodule": "/Users/devinpowers/Claude/SimpleNotes/.build/arm64-apple-macosx/debug/SimpleNotes.build/ContentView~partial.swiftmodule",
+    "swift-dependencies": "/Users/devinpowers/Claude/SimpleNotes/.build/arm64-apple-macosx/debug/SimpleNotes.build/ContentView.swiftdeps"
+  },
+  "/Users/devinpowers/Claude/SimpleNotes/SimpleNotes/Views/NoteEditorView.swift": {
+    "dependencies": "/Users/devinpowers/Claude/SimpleNotes/.build/arm64-apple-macosx/debug/SimpleNotes.build/NoteEditorView.d",
+    "object": "/Users/devinpowers/Claude/SimpleNotes/.build/arm64-apple-macosx/debug/SimpleNotes.build/NoteEditorView.swift.o",
+    "swiftmodule": "/Users/devinpowers/Claude/SimpleNotes/.build/arm64-apple-macosx/debug/SimpleNotes.build/NoteEditorView~partial.swiftmodule",
+    "swift-dependencies": "/Users/devinpowers/Claude/SimpleNotes/.build/arm64-apple-macosx/debug/SimpleNotes.build/NoteEditorView.swiftdeps"
+  },
+  "/Users/devinpowers/Claude/SimpleNotes/SimpleNotes/Views/NoteListView.swift": {
+    "dependencies": "/Users/devinpowers/Claude/SimpleNotes/.build/arm64-apple-macosx/debug/SimpleNotes.build/NoteListView.d",
+    "object": "/Users/devinpowers/Claude/SimpleNotes/.build/arm64-apple-macosx/debug/SimpleNotes.build/NoteListView.swift.o",
+    "swiftmodule": "/Users/devinpowers/Claude/SimpleNotes/.build/arm64-apple-macosx/debug/SimpleNotes.build/NoteListView~partial.swiftmodule",
+    "swift-dependencies": "/Users/devinpowers/Claude/SimpleNotes/.build/arm64-apple-macosx/debug/SimpleNotes.build/NoteListView.swiftdeps"
+  },
+  "/Users/devinpowers/Claude/SimpleNotes/SimpleNotes/Views/NoteRowView.swift": {
+    "dependencies": "/Users/devinpowers/Claude/SimpleNotes/.build/arm64-apple-macosx/debug/SimpleNotes.build/NoteRowView.d",
+    "object": "/Users/devinpowers/Claude/SimpleNotes/.build/arm64-apple-macosx/debug/SimpleNotes.build/NoteRowView.swift.o",
+    "swiftmodule": "/Users/devinpowers/Claude/SimpleNotes/.build/arm64-apple-macosx/debug/SimpleNotes.build/NoteRowView~partial.swiftmodule",
+    "swift-dependencies": "/Users/devinpowers/Claude/SimpleNotes/.build/arm64-apple-macosx/debug/SimpleNotes.build/NoteRowView.swiftdeps"
+  }
+}

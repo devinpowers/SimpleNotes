@@ -1,0 +1,280 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4017C53C2F3A0E32008E4D68 /* MarkdownPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4017C53B2F3A0E32008E4D68 /* MarkdownPreviewView.swift */; };
+		4017C53E2F3A1181008E4D68 /* MarkdownTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4017C53D2F3A1181008E4D68 /* MarkdownTextEditor.swift */; };
+		AA000001 /* SimpleNotesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA100001 /* SimpleNotesApp.swift */; };
+		AA000002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA100002 /* ContentView.swift */; };
+		AA000003 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA100003 /* Note.swift */; };
+		AA000004 /* NoteListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA100004 /* NoteListView.swift */; };
+		AA000005 /* NoteEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA100005 /* NoteEditorView.swift */; };
+		AA000006 /* NoteRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA100006 /* NoteRowView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		4017C53B2F3A0E32008E4D68 /* MarkdownPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownPreviewView.swift; sourceTree = "<group>"; };
+		4017C53D2F3A1181008E4D68 /* MarkdownTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownTextEditor.swift; sourceTree = "<group>"; };
+		AA100001 /* SimpleNotesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleNotesApp.swift; sourceTree = "<group>"; };
+		AA100002 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		AA100003 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		AA100004 /* NoteListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteListView.swift; sourceTree = "<group>"; };
+		AA100005 /* NoteEditorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteEditorView.swift; sourceTree = "<group>"; };
+		AA100006 /* NoteRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteRowView.swift; sourceTree = "<group>"; };
+		AA100007 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AA200001 /* SimpleNotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleNotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		AA300001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		AA400001 = {
+			isa = PBXGroup;
+			children = (
+				AA400002 /* SimpleNotes */,
+				AA400005 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		AA400002 /* SimpleNotes */ = {
+			isa = PBXGroup;
+			children = (
+				AA100001 /* SimpleNotesApp.swift */,
+				AA100007 /* Info.plist */,
+				AA400003 /* Models */,
+				AA400004 /* Views */,
+			);
+			path = SimpleNotes;
+			sourceTree = "<group>";
+		};
+		AA400003 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				AA100003 /* Note.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		AA400004 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4017C53D2F3A1181008E4D68 /* MarkdownTextEditor.swift */,
+				4017C53B2F3A0E32008E4D68 /* MarkdownPreviewView.swift */,
+				AA100002 /* ContentView.swift */,
+				AA100004 /* NoteListView.swift */,
+				AA100005 /* NoteEditorView.swift */,
+				AA100006 /* NoteRowView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		AA400005 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				AA200001 /* SimpleNotes.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		AA500001 /* SimpleNotes */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = AA700002 /* Build configuration list for PBXNativeTarget "SimpleNotes" */;
+			buildPhases = (
+				AA600001 /* Sources */,
+				AA300001 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SimpleNotes;
+			productName = SimpleNotes;
+			productReference = AA200001 /* SimpleNotes.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		AA800001 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+			};
+			buildConfigurationList = AA700001 /* Build configuration list for PBXProject "SimpleNotes" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = AA400001;
+			productRefGroup = AA400005 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				AA500001 /* SimpleNotes */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		AA600001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				AA000001 /* SimpleNotesApp.swift in Sources */,
+				AA000002 /* ContentView.swift in Sources */,
+				4017C53E2F3A1181008E4D68 /* MarkdownTextEditor.swift in Sources */,
+				AA000003 /* Note.swift in Sources */,
+				4017C53C2F3A0E32008E4D68 /* MarkdownPreviewView.swift in Sources */,
+				AA000004 /* NoteListView.swift in Sources */,
+				AA000005 /* NoteEditorView.swift in Sources */,
+				AA000006 /* NoteRowView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		AA900001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) DEBUG";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		AA900002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		AA900003 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_HARDENED_RUNTIME = NO;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = SimpleNotes/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.simplenotes.SimpleNotes;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		AA900004 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_HARDENED_RUNTIME = NO;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = SimpleNotes/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.simplenotes.SimpleNotes;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		AA700001 /* Build configuration list for PBXProject "SimpleNotes" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA900001 /* Debug */,
+				AA900002 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		AA700002 /* Build configuration list for PBXNativeTarget "SimpleNotes" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA900003 /* Debug */,
+				AA900004 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = AA800001 /* Project object */;
+}

@@ -1,0 +1,10 @@
+version: "Apple Swift version 5.10 (swiftlang-5.10.0.13 clang-1500.3.9.4)"
+options: "6c01111d015913c68729891e6bf66e52"
+build_time: [1770605662, 30104000]
+inputs:
+  "/Users/devinpowers/Claude/SimpleNotes/SimpleNotes/Models/Note.swift": !dirty [1770605356, 434789115]
+  "/Users/devinpowers/Claude/SimpleNotes/SimpleNotes/SimpleNotesApp.swift": !dirty [1770605382, 662544417]
+  "/Users/devinpowers/Claude/SimpleNotes/SimpleNotes/Views/ContentView.swift": !dirty [1770605380, 314582792]
+  "/Users/devinpowers/Claude/SimpleNotes/SimpleNotes/Views/NoteEditorView.swift": !dirty [1770605364, 183025164]
+  "/Users/devinpowers/Claude/SimpleNotes/SimpleNotes/Views/NoteListView.swift": !dirty [1770605369, 120670952]
+  "/Users/devinpowers/Claude/SimpleNotes/SimpleNotes/Views/NoteRowView.swift": !dirty [1770605363, 813015338]
