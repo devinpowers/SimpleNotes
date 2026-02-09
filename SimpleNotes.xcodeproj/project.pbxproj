@@ -15,7 +15,22 @@
 		AA000004 /* NoteListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA100004 /* NoteListView.swift */; };
 		AA000005 /* NoteEditorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA100005 /* NoteEditorView.swift */; };
 		AA000006 /* NoteRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA100006 /* NoteRowView.swift */; };
+		BB000001 /* MarkdownParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB100001 /* MarkdownParser.swift */; };
+		BB000002 /* CodeTemplates.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB100002 /* CodeTemplates.swift */; };
+		BB000003 /* MarkdownParserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB100003 /* MarkdownParserTests.swift */; };
+		BB000004 /* CodeTemplatesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB100004 /* CodeTemplatesTests.swift */; };
+		BB000005 /* NoteModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB100005 /* NoteModelTests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BB300001 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA800001 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AA500001;
+			remoteInfo = SimpleNotes;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		4017C53B2F3A0E32008E4D68 /* MarkdownPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownPreviewView.swift; sourceTree = "<group>"; };
@@ -28,10 +43,23 @@
 		AA100006 /* NoteRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteRowView.swift; sourceTree = "<group>"; };
 		AA100007 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA200001 /* SimpleNotes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleNotes.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB100001 /* MarkdownParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownParser.swift; sourceTree = "<group>"; };
+		BB100002 /* CodeTemplates.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeTemplates.swift; sourceTree = "<group>"; };
+		BB100003 /* MarkdownParserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarkdownParserTests.swift; sourceTree = "<group>"; };
+		BB100004 /* CodeTemplatesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeTemplatesTests.swift; sourceTree = "<group>"; };
+		BB100005 /* NoteModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteModelTests.swift; sourceTree = "<group>"; };
+		BB200001 /* SimpleNotesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimpleNotesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		AA300001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB400001 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -45,6 +73,7 @@
 			isa = PBXGroup;
 			children = (
 				AA400002 /* SimpleNotes */,
+				BB400006 /* SimpleNotesTests */,
 				AA400005 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -64,6 +93,8 @@
 			isa = PBXGroup;
 			children = (
 				AA100003 /* Note.swift */,
+				BB100001 /* MarkdownParser.swift */,
+				BB100002 /* CodeTemplates.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -85,8 +116,19 @@
 			isa = PBXGroup;
 			children = (
 				AA200001 /* SimpleNotes.app */,
+				BB200001 /* SimpleNotesTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		BB400006 /* SimpleNotesTests */ = {
+			isa = PBXGroup;
+			children = (
+				BB100003 /* MarkdownParserTests.swift */,
+				BB100004 /* CodeTemplatesTests.swift */,
+				BB100005 /* NoteModelTests.swift */,
+			);
+			path = SimpleNotesTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -107,6 +149,23 @@
 			productName = SimpleNotes;
 			productReference = AA200001 /* SimpleNotes.app */;
 			productType = "com.apple.product-type.application";
+		};
+		BB500001 /* SimpleNotesTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BB700001 /* Build configuration list for PBXNativeTarget "SimpleNotesTests" */;
+			buildPhases = (
+				BB600001 /* Sources */,
+				BB400001 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BB500002 /* PBXTargetDependency */,
+			);
+			name = SimpleNotesTests;
+			productName = SimpleNotesTests;
+			productReference = BB200001 /* SimpleNotesTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
 
@@ -132,6 +191,7 @@
 			projectRoot = "";
 			targets = (
 				AA500001 /* SimpleNotes */,
+				BB500001 /* SimpleNotesTests */,
 			);
 		};
 /* End PBXProject section */
@@ -149,10 +209,30 @@
 				AA000004 /* NoteListView.swift in Sources */,
 				AA000005 /* NoteEditorView.swift in Sources */,
 				AA000006 /* NoteRowView.swift in Sources */,
+				BB000001 /* MarkdownParser.swift in Sources */,
+				BB000002 /* CodeTemplates.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB600001 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB000003 /* MarkdownParserTests.swift in Sources */,
+				BB000004 /* CodeTemplatesTests.swift in Sources */,
+				BB000005 /* NoteModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BB500002 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AA500001 /* SimpleNotes */;
+			targetProxy = BB300001 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		AA900001 /* Debug */ = {
@@ -253,6 +333,40 @@
 			};
 			name = Release;
 		};
+		BB900001 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.simplenotes.SimpleNotesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SimpleNotes.app/Contents/MacOS/SimpleNotes";
+			};
+			name = Debug;
+		};
+		BB900002 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "-";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.simplenotes.SimpleNotesTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SimpleNotes.app/Contents/MacOS/SimpleNotes";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -270,6 +384,15 @@
 			buildConfigurations = (
 				AA900003 /* Debug */,
 				AA900004 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BB700001 /* Build configuration list for PBXNativeTarget "SimpleNotesTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BB900001 /* Debug */,
+				BB900002 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

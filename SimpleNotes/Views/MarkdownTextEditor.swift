@@ -44,6 +44,24 @@ struct MarkdownTextEditor: NSViewRepresentable {
         var parent: MarkdownTextEditor
         weak var textView: NSTextView?
 
+        // Colors for syntax highlighting inside code blocks
+        private let keywordColor = NSColor.systemPurple
+        private let stringColor = NSColor.systemRed
+        private let commentColor = NSColor.systemGreen
+        private let languageColor = NSColor.systemOrange
+
+        private static let keywords: Set<String> = [
+            "func", "let", "var", "if", "else", "for", "while", "return",
+            "import", "class", "struct", "def", "const", "function",
+            "enum", "switch", "case", "break", "continue", "guard",
+            "self", "true", "false", "nil", "null", "undefined",
+            "async", "await", "try", "catch", "throw", "fn", "pub",
+            "mut", "impl", "trait", "type", "interface", "export",
+            "from", "select", "where", "insert", "update", "delete",
+            "create", "drop", "table", "index", "join", "on",
+            "print", "println", "echo", "fmt"
+        ]
+
         init(_ parent: MarkdownTextEditor) {
             self.parent = parent
         }
@@ -89,12 +107,23 @@ struct MarkdownTextEditor: NSViewRepresentable {
                     } else {
                         inCodeBlock = true
                         codeBlockStart = offset
+
+                        // Highlight language identifier
+                        let langText = String(line.dropFirst(3)).trimmingCharacters(in: .whitespaces)
+                        if !langText.isEmpty {
+                            let langStart = offset + 3
+                            let langRange = NSRange(location: langStart, length: line.count - 3)
+                            storage.addAttribute(.foregroundColor, value: languageColor, range: langRange)
+                        }
                     }
                 } else if inCodeBlock {
                     storage.addAttributes([
                         .font: NSFont.monospacedSystemFont(ofSize: 13, weight: .regular),
                         .foregroundColor: NSColor.labelColor
                     ], range: lineRange)
+
+                    // Syntax highlighting inside code blocks
+                    highlightCodeLine(line, offset: offset, storage: storage)
                 } else {
                     // Headers
                     if line.hasPrefix("### ") {
@@ -132,6 +161,65 @@ struct MarkdownTextEditor: NSViewRepresentable {
             }
 
             storage.endEditing()
+        }
+
+        private func highlightCodeLine(_ line: String, offset: Int, storage: NSTextStorage) {
+            // Comments: // or #
+            if let commentRange = findComment(in: line) {
+                let nsRange = NSRange(location: offset + commentRange.lowerBound, length: commentRange.count)
+                storage.addAttribute(.foregroundColor, value: commentColor, range: nsRange)
+                // Don't highlight keywords/strings inside comments
+                let beforeComment = String(line.prefix(commentRange.lowerBound))
+                highlightKeywordsAndStrings(beforeComment, offset: offset, storage: storage)
+                return
+            }
+
+            highlightKeywordsAndStrings(line, offset: offset, storage: storage)
+        }
+
+        private func findComment(in line: String) -> Range<Int>? {
+            let trimmed = line.trimmingCharacters(in: .whitespaces)
+            // Line starting with # (but not #! shebang)
+            if trimmed.hasPrefix("#") && !trimmed.hasPrefix("#!") {
+                if let idx = line.firstIndex(of: "#") {
+                    let start = line.distance(from: line.startIndex, to: idx)
+                    return start..<line.count
+                }
+            }
+            // // comment
+            var inString = false
+            var stringChar: Character = "\""
+            let chars = Array(line)
+            for i in 0..<chars.count {
+                if !inString {
+                    if chars[i] == "\"" || chars[i] == "'" {
+                        inString = true
+                        stringChar = chars[i]
+                    } else if chars[i] == "/" && i + 1 < chars.count && chars[i + 1] == "/" {
+                        return i..<line.count
+                    }
+                } else {
+                    if chars[i] == stringChar && (i == 0 || chars[i - 1] != "\\") {
+                        inString = false
+                    }
+                }
+            }
+            return nil
+        }
+
+        private func highlightKeywordsAndStrings(_ line: String, offset: Int, storage: NSTextStorage) {
+            // Strings: "..." or '...'
+            highlightPattern("\"[^\"\\\\]*(?:\\\\.[^\"\\\\]*)*\"", in: line, offset: offset, storage: storage, attributes: [
+                .foregroundColor: stringColor
+            ])
+            highlightPattern("'[^'\\\\]*(?:\\\\.[^'\\\\]*)*'", in: line, offset: offset, storage: storage, attributes: [
+                .foregroundColor: stringColor
+            ])
+
+            // Keywords: word boundary match
+            highlightPattern("\\b(?:func|let|var|if|else|for|while|return|import|class|struct|def|const|function|enum|switch|case|break|continue|guard|self|true|false|nil|null|undefined|async|await|try|catch|throw|fn|pub|mut|impl|trait|type|interface|export|from|select|where|insert|update|delete|create|drop|table|index|join|on|print|println|echo|fmt)\\b", in: line, offset: offset, storage: storage, attributes: [
+                .foregroundColor: keywordColor
+            ])
         }
 
         private func highlightPattern(_ pattern: String, in line: String, offset: Int, storage: NSTextStorage, attributes: [NSAttributedString.Key: Any]) {
