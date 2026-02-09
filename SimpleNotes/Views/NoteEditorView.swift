@@ -6,6 +6,7 @@ struct NoteEditorView: View {
     @Bindable var note: Note
     @FocusState private var titleFocused: Bool
     @State private var showPreview = false
+    @State private var showCodePopover = false
 
     var body: some View {
         VStack(spacing: 0) {
@@ -75,6 +76,21 @@ struct NoteEditorView: View {
                 .keyboardShortcut("p", modifiers: .command)
                 .help(showPreview ? "Edit (Cmd+P)" : "Preview (Cmd+P)")
 
+                Button {
+                    showCodePopover.toggle()
+                } label: {
+                    Label("Insert Code Block", systemImage: "chevron.left.forwardslash.chevron.right")
+                }
+                .keyboardShortcut("k", modifiers: [.command, .shift])
+                .help("Insert Code Block (Cmd+Shift+K)")
+                .popover(isPresented: $showCodePopover) {
+                    InsertCodePopover { insertion in
+                        note.body += insertion
+                        note.updatedAt = .now
+                        showCodePopover = false
+                    }
+                }
+
                 Button(action: insertImage) {
                     Label("Add Image", systemImage: "photo.badge.plus")
                 }
@@ -102,5 +118,76 @@ struct NoteEditorView: View {
             }
         }
         note.updatedAt = .now
+    }
+}
+
+private struct InsertCodePopover: View {
+    let onInsert: (String) -> Void
+    @State private var showTemplates = false
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 0) {
+            Text("Insert Code Block")
+                .font(.headline)
+                .padding(.horizontal, 12)
+                .padding(.top, 12)
+                .padding(.bottom, 8)
+
+            Divider()
+
+            ScrollView {
+                VStack(alignment: .leading, spacing: 2) {
+                    Section {
+                        ForEach(CodeTemplates.supportedLanguages, id: \.self) { lang in
+                            Button {
+                                onInsert("\n```\(lang)\n\n```\n")
+                            } label: {
+                                Text(CodeTemplates.displayNames[lang] ?? lang)
+                                    .frame(maxWidth: .infinity, alignment: .leading)
+                            }
+                            .buttonStyle(.plain)
+                            .padding(.horizontal, 12)
+                            .padding(.vertical, 4)
+                            .contentShape(Rectangle())
+                        }
+                    } header: {
+                        Text("Languages")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                            .padding(.horizontal, 12)
+                            .padding(.top, 8)
+                    }
+
+                    Divider().padding(.vertical, 4)
+
+                    Section {
+                        ForEach(CodeTemplates.templates) { template in
+                            Button {
+                                onInsert("\n\(template.markdown)\n")
+                            } label: {
+                                VStack(alignment: .leading, spacing: 1) {
+                                    Text(template.name)
+                                    Text(CodeTemplates.displayNames[template.language] ?? template.language)
+                                        .font(.caption)
+                                        .foregroundStyle(.secondary)
+                                }
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                            }
+                            .buttonStyle(.plain)
+                            .padding(.horizontal, 12)
+                            .padding(.vertical, 4)
+                            .contentShape(Rectangle())
+                        }
+                    } header: {
+                        Text("Templates")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                            .padding(.horizontal, 12)
+                    }
+                }
+                .padding(.bottom, 8)
+            }
+        }
+        .frame(width: 220, height: 400)
     }
 }

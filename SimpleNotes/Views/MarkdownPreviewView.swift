@@ -7,7 +7,7 @@ struct MarkdownPreviewView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 12) {
-                ForEach(Array(blocks.enumerated()), id: \.offset) { _, block in
+                ForEach(Array(MarkdownParser.parse(markdown).enumerated()), id: \.offset) { _, block in
                     switch block {
                     case .code(let language, let code):
                         codeBlock(language: language, code: code)
@@ -36,80 +36,71 @@ struct MarkdownPreviewView: View {
     }
 
     private func codeBlock(language: String, code: String) -> some View {
-        VStack(alignment: .leading, spacing: 4) {
-            if !language.isEmpty {
-                Text(language)
-                    .font(.caption)
-                    .foregroundStyle(.secondary)
+        VStack(alignment: .leading, spacing: 0) {
+            // Header with language badge and copy button
+            HStack {
+                if !language.isEmpty {
+                    Text(CodeTemplates.displayNames[language] ?? language)
+                        .font(.caption)
+                        .fontWeight(.medium)
+                        .padding(.horizontal, 8)
+                        .padding(.vertical, 3)
+                        .background(Color.accentColor.opacity(0.15))
+                        .foregroundStyle(Color.accentColor)
+                        .cornerRadius(4)
+                }
+                Spacer()
+                Button {
+                    NSPasteboard.general.clearContents()
+                    NSPasteboard.general.setString(code, forType: .string)
+                } label: {
+                    Label("Copy", systemImage: "doc.on.doc")
+                        .font(.caption)
+                }
+                .buttonStyle(.plain)
+                .foregroundStyle(.secondary)
             }
+            .padding(.horizontal, 10)
+            .padding(.top, 8)
+            .padding(.bottom, 4)
+
+            // Code with line numbers
             ScrollView(.horizontal, showsIndicators: false) {
-                Text(code)
-                    .font(.system(.body, design: .monospaced))
-                    .textSelection(.enabled)
+                HStack(alignment: .top, spacing: 0) {
+                    let lines = code.components(separatedBy: "\n")
+                    // Line numbers
+                    VStack(alignment: .trailing, spacing: 0) {
+                        ForEach(1...max(lines.count, 1), id: \.self) { num in
+                            Text("\(num)")
+                                .font(.system(.caption, design: .monospaced))
+                                .foregroundStyle(.tertiary)
+                                .frame(height: 18)
+                        }
+                    }
+                    .padding(.leading, 10)
+                    .padding(.trailing, 8)
+
+                    Divider()
+                        .padding(.vertical, 2)
+
+                    // Code content
+                    VStack(alignment: .leading, spacing: 0) {
+                        ForEach(Array(lines.enumerated()), id: \.offset) { _, line in
+                            Text(line.isEmpty ? " " : line)
+                                .font(.system(.body, design: .monospaced))
+                                .textSelection(.enabled)
+                                .frame(height: 18, alignment: .leading)
+                        }
+                    }
+                    .padding(.leading, 8)
+                    .padding(.trailing, 10)
+                }
             }
+            .padding(.bottom, 8)
         }
-        .padding(10)
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(Color(nsColor: .controlBackgroundColor))
         .cornerRadius(6)
         .overlay(RoundedRectangle(cornerRadius: 6).stroke(Color.gray.opacity(0.3)))
-    }
-
-    private enum Block {
-        case text(String)
-        case code(language: String, code: String)
-        case imagePlaceholder(index: Int)
-    }
-
-    private var blocks: [Block] {
-        var result: [Block] = []
-        var currentText = ""
-        let lines = markdown.components(separatedBy: "\n")
-        var i = 0
-
-        while i < lines.count {
-            let line = lines[i]
-
-            // Check for image placeholder: ![image](index)
-            if line.hasPrefix("![image](") && line.hasSuffix(")") {
-                let inner = line.dropFirst(9).dropLast(1)
-                if let idx = Int(inner) {
-                    if !currentText.isEmpty {
-                        result.append(.text(currentText.trimmingCharacters(in: .newlines)))
-                        currentText = ""
-                    }
-                    result.append(.imagePlaceholder(index: idx))
-                    i += 1
-                    continue
-                }
-            }
-
-            // Check for fenced code block
-            if line.hasPrefix("```") {
-                if !currentText.isEmpty {
-                    result.append(.text(currentText.trimmingCharacters(in: .newlines)))
-                    currentText = ""
-                }
-                let language = String(line.dropFirst(3)).trimmingCharacters(in: .whitespaces)
-                var codeLines: [String] = []
-                i += 1
-                while i < lines.count && !lines[i].hasPrefix("```") {
-                    codeLines.append(lines[i])
-                    i += 1
-                }
-                result.append(.code(language: language, code: codeLines.joined(separator: "\n")))
-                i += 1 // skip closing ```
-                continue
-            }
-
-            currentText += (currentText.isEmpty ? "" : "\n") + line
-            i += 1
-        }
-
-        if !currentText.isEmpty {
-            result.append(.text(currentText.trimmingCharacters(in: .newlines)))
-        }
-
-        return result
     }
 }
